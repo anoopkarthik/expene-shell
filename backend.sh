@@ -49,8 +49,8 @@ then
     VALIDATE $? "Creating expense user"
 else
     echo -e "expense user already exists $Y SKIPPING $N"
+fi
 
 useradd expense
 VALIDATE $? "Creating user"
-
-
+    
