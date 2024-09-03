@@ -75,8 +75,8 @@ VALIDATE $? "Loading schema"
 systemctl daemon-reload &>>$LOG_FILE
 VALIDATE $? "Daemon reload"
 
-systemctl start backend &>>$LOG_FILE
-VALIDATE $? "Start backend"
+systemctl restart backend &>>$LOG_FILE
+VALIDATE $? "restart backend"
 
 systemctl enable backend &>>$LOG_FILE
 VALIDATE $? "Enabled backend"
