@@ -15,7 +15,7 @@ Y="\e[33m"
 
 #echo "User ID is: $USERID"
 
-CHECK_ROOT(){
+CHECKROOT(){
     if [ $USERID -ne 0 ]
     then
         echo "$R Please run this script with root priveleges $N" | tee -a $LOG_FILE
@@ -37,8 +37,7 @@ VALIDATE(){
 echo "script started executing at:: $(date)"  | tee -a $LOG_FILE
 
 
-CHECK_ROOT
-
+CHECKROOT
 
 dnf install mysql-server -y &>>$LOG_FILE
 VALIDATE $? "Installing mysql server"
