@@ -64,7 +64,7 @@ rm -rf /app/*
 unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "Extracting balanced application code"
 
-cp /home/ec2-user/expense-shell/backend.service vim /etc/systemd/system/backend.service
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
 
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Installing mysql client"
