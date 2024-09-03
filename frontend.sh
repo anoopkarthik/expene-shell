@@ -44,7 +44,7 @@ VALIDATE $? "Enabled nginx"
 systemctl start nginx &>>$LOG_FILE
 VALIDATE $? "Start nginx"
 
-rm-rf /usr/share/nginx/html/* &>>$LOG_FILE
+rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
 VALIDATE $? "Removing default website"
 
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOG_FILE
