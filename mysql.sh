@@ -18,7 +18,7 @@ Y="\e[33m"
 CHECKROOT(){
     if [ $USERID -ne 0 ]
     then
-        echo "$R Please run this script with root priveleges $N" | tee -a $LOG_FILE
+        echo -e "$R Please run this script with root priveleges $N" | tee -a $LOG_FILE
         exit 1
     fi
 
@@ -48,7 +48,14 @@ VALIDATE $? "Enabled mysqld server"
 systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Started mysqld server"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
-VALIDATE $? "Setting up mysl server"
-      
+mysql -h 172.31.35.92 -u root -pExpenseApp@1 -e 'show databases;'| &>>$LOG_FILE
+if [ $? -ne 0 ]
+then 
+    echo "Mysql root password is not setup, setting now" &>>$LOG_FILE
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+    VALIDATE $? "Setting up root password"
+else
+    echo "Mysql root password is already setup....$Y skipping $N" &>>$LOG_FILE
+fi
+          
    
