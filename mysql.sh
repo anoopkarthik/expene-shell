@@ -51,5 +51,5 @@ VALIDATE $? "Started mysqld server"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
 VALIDATE $? "Setting up mysl server"
-   
+      
    
