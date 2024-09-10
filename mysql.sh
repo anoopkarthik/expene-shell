@@ -20,7 +20,7 @@ CHECK_ROOT(){
     fi
 }
 
-VALIDATE(){
+VALIDATE(){uj
     if [ $1 -ne 0 ]
     then
         echo -e "$2 is...$R FAILED $N"  | tee -a $LOG_FILE
@@ -43,7 +43,7 @@ VALIDATE $? "Enabled MySQL Server"
 systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Started MySQL server"
 
-mysql -h 172.31.43.199 -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
+mysql -h kumarkarti.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
     echo "MySQL root password is not setup, setting now" &>>$LOG_FILE
